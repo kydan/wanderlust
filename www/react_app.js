@@ -31,6 +31,18 @@ var PhoneForm = React.createClass({
 
 var ResultTable = React.createClass({
   render: function(){
+    
+    var providerResults= this.props.data.map(function(item){
+      return(
+        <tr>
+          <td>{item.provider}</td>
+          <td className="success" >{item.voice_2g_data}</td>
+          <td className="danger">{item.data_3g}</td>
+          <td className="success">{item.data_lte}</td>
+        </tr>
+      )
+    });
+    
     return (
           <div className="container">
           <table className="table table-bordered">
@@ -41,26 +53,7 @@ var ResultTable = React.createClass({
               <th>LTE Data</th>
           </thead>
           <tbody>
-            <tr>
-              <td>AT&T</td>
-              <td className="success" >Yes</td>
-              <td className="danger">No</td>
-              <td className="success">Yes</td>
-              
-            </tr>
-            <tr>
-              <td>T-Mobile</td>
-              <td className="success" >Yes</td>
-              <td className="success" >Yes</td>
-              <td className="success" >Yes</td>
-            </tr>
-            <tr>
-              <td>Straight-Talk</td>
-              <td className="success" >Yes</td>
-              <td className="danger">No</td>
-              <td className="danger">No</td>
-           
-            </tr>
+            {providerResults} 
           </tbody>
           </table>
         </div>
@@ -68,15 +61,24 @@ var ResultTable = React.createClass({
   }
 });
 
+    var data = [
+        {provider: "AT&T", voice_2g_data: "Yes", data_3g: "Yes", data_lte: "Yes"},
+        {provider: "US Cellular", voice_2g_data: "Yes", data_3g: "No", data_lte: "Yes"},
+        {provider: "Verizon", voice_2g_data: "No", data_3g: "No", data_lte: "No"},
+        {provider: "T-Mobile", voice_2g_data: "Yes", data_3g: "No", data_lte: "No"},
+    ];
+
 var WanderApp = React.createClass({
+  
   render: function () {
+    
     return (
       <div>
         <PhoneForm />
-        <ResultTable />
+        <ResultTable data={this.props.data}/>
       </div>
       );
   }
 });
 
-React.render(<WanderApp />, document.getElementById('app'));
+React.render(<WanderApp data={data}/>, document.getElementById('app'));
