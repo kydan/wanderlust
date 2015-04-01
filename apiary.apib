@@ -216,3 +216,37 @@ A single Network object with all its details
             
 ### Remove a Network [DELETE]
 + Response 204
+
+# Group Reports  
+different logic-driven responses
+
+## List Compatible Networks [/reports/compatible_networks{?id_phone,id_country}]
+Respond with list of compatible networks in a given based on phone model
+
++ Response 200 (application/json)
+
+        [
+           {
+               provider: "AT&T",
+                voice_2g_data: "Yes",
+                data_3g: "Yes",
+                data_lte: "Yes"
+           },
+           {
+               provider: "US Cellular",
+               voice_2g_data: "Yes",
+               data_3g: "No",
+               data_lte: "Yes"
+           },
+           {
+               provider: "Verizon",
+               voice_2g_data: "No",
+               data_3g: "No",
+               data_lte: "No"
+           },
+           {
+               provider: "T-Mobile",
+               voice_2g_data: "Yes",
+               data_3g: "No",
+               data_lte: "No"},
+   ]
