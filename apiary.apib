@@ -216,3 +216,42 @@ A single Network object with all its details
             
 ### Remove a Network [DELETE]
 + Response 204
+
+# Group Reports  
+Return the reports on phones and networks
+
+## Reports [/reports?phone={phone_id}&network={network_id}]
+
+    + Parameters
+      + phone_id: `123` (number, required) - ID of the phone.
+      + network_id: `321` (number, required) - ID of the network.
+    
+### Return compatible networks [GET]
++ Response 200 (application/json)
+
+        [
+           {
+               provider: "AT&T",
+                voice_2g_data: "Yes",
+                data_3g: "Yes",
+                data_lte: "Yes"
+           },
+           {
+               provider: "US Cellular",
+               voice_2g_data: "Yes",
+               data_3g: "No",
+               data_lte: "Yes"
+           },
+           {
+               provider: "Verizon",
+               voice_2g_data: "No",
+               data_3g: "No",
+               data_lte: "No"
+           },
+           {
+               provider: "T-Mobile",
+               voice_2g_data: "Yes",
+               data_3g: "No",
+               data_lte: "No"
+            },
+        ]
