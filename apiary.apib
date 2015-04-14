@@ -10,7 +10,7 @@ The list of countries that have mobile phone carriers
 ### List all Countries[GET]
 + Response 200 (application/json)
 
-        [
+        {"data":[
             {
                 "id": 1,
                 "name": "United States",
@@ -21,7 +21,7 @@ The list of countries that have mobile phone carriers
                 "name": "China",
                 "abbr": "CN"
             }
-        ]
+        ]}
 
 
 ### Create a Country [POST]
@@ -31,7 +31,7 @@ The list of countries that have mobile phone carriers
 
 + Response 201 (application/json)
 
-        { "id": 3, "name": "Japan", "abbr": "JPN"}
+        {"data":{ "id": 3, "name": "Japan", "abbr": "JPN"}}
 
 ## Country [/countries/{id}]
 A single Country object with all its details
@@ -57,7 +57,7 @@ The list of phones that are generally considered "smart"
 ### List all Phones[GET]
 + Response 200 (application/json)
 
-        [
+        {"data":[
             {
                 "id": 1,
                 "name": "Nexus 4", 
@@ -78,7 +78,7 @@ The list of phones that are generally considered "smart"
                 "hSPAFreq": [850, 900, 1900, 2100],
                 "lteType": [] 
             },
-        ]
+        ]}
 
 
 ### Create a Phone [POST]
@@ -96,7 +96,7 @@ The list of phones that are generally considered "smart"
         
 + Response 201 (application/json)
 
-        {
+        {"data":{
             "id": 3,
             "name": "iPhone 5", 
             "manufacturer": "Apple",
@@ -105,7 +105,7 @@ The list of phones that are generally considered "smart"
             "hspaType": ["UMTS / WCDMA","HSDPA", "HSUPA"], 
             "hSPAFreq": [1700, 1900, 2100],
             "lteType":  ["TD-LTE"],
-        }
+        }}
 
 ## Phones [/phones/{id}]
 A single Phone object with all its details
@@ -118,7 +118,7 @@ A single Phone object with all its details
 
     + Body
 
-            {
+            {"data":{
                 "id": 2, 
                 "name": "HTC One",
                 "manufacturer": "HTC",
@@ -127,7 +127,7 @@ A single Phone object with all its details
                 "hspaType": ["UMTS / WCDMA", "HSPDA", "HSUPA"], 
                 "hSPAFreq": [850, 900, 1900, 2100],
                 "lteType": [] 
-            }
+            }}
             
 ### Remove a Phone [DELETE]
 + Response 204
@@ -139,7 +139,7 @@ The list of phone networks that are in countries
 ### List all Networks [GET]
 + Response 200 (application/json)
 
-        [
+        {"data":[
             {
                 "id": 1,
                 "name": "China Unicom",
@@ -167,7 +167,7 @@ The list of phone networks that are in countries
                 "hspaType":["UMTS / WCDMA", "HSDPA", "HSUPA"], 
                 "HSPAFreq":[1700, 2100]
             }
-        ]
+        ]}
 
 ### Create a Network [POST]
 + Request (application/json)
@@ -183,7 +183,7 @@ The list of phone networks that are in countries
         
 + Response 201 (application/json)
 
-        {
+        {"data":{
             "id": 4,
             "name": "Verizon",
             "countryID": 1,
@@ -191,7 +191,7 @@ The list of phone networks that are in countries
             "gsmFreq":[850, 1900], 
             "hspaType":["UMTS / WCDMA", "HSDPA", "HSUPA"], 
             "HSPAFreq":[1700, 2100]
-        }
+        }}
 
 ## Network [/networks/{id}]
 A single Network object with all its details
@@ -204,7 +204,7 @@ A single Network object with all its details
 
     + Body
 
-            {
+            {"data":{
                 "id": 3,
                 "name": "T-Mobile",
                 "countryID": 2,
@@ -212,7 +212,7 @@ A single Network object with all its details
                 "gsmFreq":[850, 1900], 
                 "hspaType":["UMTS / WCDMA", "HSDPA", "HSUPA"], 
                 "HSPAFreq":[1700, 2100]
-            }
+            }}
             
 ### Remove a Network [DELETE]
 + Response 204
@@ -229,7 +229,7 @@ Return the reports on phones and networks
 ### Return compatible networks [GET]
 + Response 200 (application/json)
 
-        [
+        {"data":[
            {
                 "provider": "AT&T",
                 "voice_2g_data": "Yes",
@@ -253,5 +253,5 @@ Return the reports on phones and networks
                "voice_2g_data": "Yes",
                "data_3g": "No",
                "data_lte": "No"
-            },
-        ]
+            }
+        ]}
