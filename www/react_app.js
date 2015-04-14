@@ -10,16 +10,27 @@ var WelcomeMsg = React.createClass({
 });
 
 var PhoneForm = React.createClass({
+  getInitialState: function(){
+    return ( {
+      phonePlaceholder: "What phone do you have?",
+      countryPlaceholder: "Where are you going?"
+    } )
+  },
+  handleSubmit: function(e){
+    e.preventDefault();
+    console.log('HERE');
+    return;
+  },
   render: function(){
     return (
-          <form className="form-inline" role="form">
+          <form className="form-inline" role="form" onSubmit={this.handleSubmit}>
             <div className="form-group">
               <label className="sr-only" htmlFor="inputPhone">search</label>
-              <input id="phone" name="where" type="search" placeholder="What phone do you have?" className="form-control input-md" required="" />
+              <input id="phone" name="phone" type="search" placeholder={this.state.phonePlaceholder} className="form-control input-md" required="" />
             </div>
             <div className="form-group">
               <label className="sr-only" htmlFor="inputCountry">search</label>
-              <input id="country" name="where" type="search" placeholder="where are you going?" className="form-control input-md" required="" />
+              <input id="country" name="country" type="search" placeholder={this.state.countryPlaceholder} className="form-control input-md" required="" />
             </div>
             <button className="btn btn-default">
               <span className="glyphicon glyphicon-search" style={{verticalAlign: 'middle' }}></span>
@@ -30,8 +41,8 @@ var PhoneForm = React.createClass({
 });
 
 var ResultTable = React.createClass({
+  
   render: function(){
-    
     var providerResults= this.props.data.map(function(item){
       return(
         <tr>
