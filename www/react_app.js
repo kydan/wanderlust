@@ -10,34 +10,37 @@ var WelcomeMsg = React.createClass({
 });
 
 var PhoneForm = React.createClass({
+  
   getInitialState: function(){
     return ( {
       phonePlaceholder: "What phone do you have?",
       countryPlaceholder: "Where are you going?"
     } )
   },
-  handleSubmit: function() {
-    $.ajax({
-      url: this.props.url,
-      dataType: 'json',
-      success: function(data) {
-        this.setState({data: data});
-      }.bind(this),
-      error: function(xhr, status, err) {
-        console.error(this.props.url, status, err.toString());
-      }.bind(this)
-    });
+  
+  handleSubmit: function(e) {
+    // preventing the submit event from bubbling up
+    e.preventDefault();
+    // looking up the refs for country and phone in the browser dom
+    var phone = React.findDOMNode(this.refs.phone).value.trim();
+    var country = React.findDOMNode(this.refs.country).value.trim();
+    if (!phone || !country) {
+      return;
+    }
+    // Calling our parent click handler with the 
+    this.props.clickHandler(phone, country);
   },
+  
   render: function(){
     return (
           <form className="form-inline" role="form" onSubmit={this.handleSubmit}>
             <div className="form-group">
               <label className="sr-only" htmlFor="inputPhone">search</label>
-              <input id="phone" name="phone" type="search" placeholder={this.state.phonePlaceholder} className="form-control input-md" required="" />
+              <input id="phone" ref="phone" name="phone" type="search" placeholder={this.state.phonePlaceholder} className="form-control input-md" required="" />
             </div>
             <div className="form-group">
               <label className="sr-only" htmlFor="inputCountry">search</label>
-              <input id="country" name="country" type="search" placeholder={this.state.countryPlaceholder} className="form-control input-md" required="" />
+              <input id="country" ref="country" name="country" type="search" placeholder={this.state.countryPlaceholder} className="form-control input-md" required="" />
             </div>
             <button className="btn btn-default">
               <span className="glyphicon glyphicon-search" style={{verticalAlign: 'middle' }}></span>
@@ -79,24 +82,40 @@ var ResultTable = React.createClass({
   }
 });
 
-    var data = [
-        {provider: "AT&T", voice_2g_data: "Yes", data_3g: "Yes", data_lte: "Yes"},
-        {provider: "US Cellular", voice_2g_data: "Yes", data_3g: "No", data_lte: "Yes"},
-        {provider: "Verizon", voice_2g_data: "No", data_3g: "No", data_lte: "No"},
-        {provider: "T-Mobile", voice_2g_data: "Yes", data_3g: "No", data_lte: "No"},
-    ];
-
 var WanderApp = React.createClass({
+  
+  getInitialState: function() {
+    return {data: []};
+  },
+  
+  phoneFormHandleSubmit: function(phone, country) {
+    var queryUrl = this.props.url + '/reports';
+    $.ajax({
+      url: queryUrl,
+      data: 'country='+country+'&phone='+phone,
+      dataType: 'json',
+      success: function(returnData) {
+        this.setState({data: returnData.data});
+      }.bind(this),
+      error: function(xhr, status, err) {
+        console.error(this.props.url, status, err.toString());
+      }.bind(this)
+    });
+  },
   
   render: function () {
     
+    var resultsTable = '';
+    if (this.state.data.length > 0) {
+      resultsTable = <ResultTable data={this.state.data}/>;
+    }
     return (
       <div>
-        <PhoneForm />
-        <ResultTable data={this.props.data}/>
+        <PhoneForm clickHandler={this.phoneFormHandleSubmit}/>
+        {resultsTable} 
       </div>
       );
   }
 });
 
-React.render(<WanderApp url="http://myapiurl.com/reports/"/>, document.getElementById('app'));
+React.render(<WanderApp url="https://private-8cf6d-wanderlust.apiary-mock.com"/>, document.getElementById('app'));
