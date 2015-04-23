@@ -1,0 +1,29 @@
+{"data":[
+    {
+        "id": 1,
+        "name": "China Unicom",
+        "countryID": 1,
+        "gsmType": ["GSM", "GPRS", "EDGE"], 
+        "gsmFreq": [850, 900, 1800, 1900], 
+        "hspaType": ["UMTS / WCDMA", "HSDPA", "HSUPA"], 
+        "HSPAFreq": [2100]
+      },
+    {
+        "id": 2,
+        "name": "ATT&T",
+        "countryID": 1,
+        "gsmType": ["GSM", "GPRS", "EDGE"], 
+        "gsmFreq": [850, 1900], 
+        "hspaType": ["UMTS / WCDMA", "HSDPA", "HSUPA"], 
+        "HSPAFreq": [1700, 1900, 2100]
+    },
+    {
+        "id": 3,
+        "name": "T-Mobile",
+        "countryID": 2,
+        "gsmType":["GSM", "GPRS", "EDGE"], 
+        "gsmFreq":[850, 1900], 
+        "hspaType":["UMTS / WCDMA", "HSDPA", "HSUPA"], 
+        "HSPAFreq":[1700, 2100]
+    }
+]}

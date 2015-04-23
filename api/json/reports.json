@@ -1,0 +1,26 @@
+{"data":[
+   {
+        "provider": "AT&T",
+        "voice_2g_data": "Yes",
+        "data_3g": "Yes",
+        "data_lte": "Yes"
+   },
+   {
+       "provider": "US Cellular",
+       "voice_2g_data": "Yes",
+       "data_3g": "No",
+       "data_lte": "Yes"
+   },
+   {
+       "provider": "Verizon",
+       "voice_2g_data": "No",
+       "data_3g": "No",
+       "data_lte": "No"
+   },
+   {
+       "provider": "T-Mobile",
+       "voice_2g_data": "Yes",
+       "data_3g": "No",
+       "data_lte": "No"
+    }
+]}
