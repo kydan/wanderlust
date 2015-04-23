@@ -1,0 +1,23 @@
+
+{"data":[
+    {
+        "id": 1,
+        "name": "Nexus 4", 
+        "manfacturer": "Motorola",
+        "gsmType": ["GSM", "GPRS", "EDGE"],
+        "gsmFreq": [850, 900, 1800, 1900], 
+        "hspaType": ["UMTS / WCDMA","HSDPA", "HSUPA"], 
+        "hSPAFreq": [1700, 1900, 2100],
+        "lteType":  ["TD-LTE"]
+    },
+    {
+        "id": 2, 
+        "name": "HTC One",
+        "manufacturer": "HTC",
+        "gsmType": ["GSM", "GPRS", "EDGE"], 
+        "gsmFreq": [850, 900, 1800, 1900], 
+        "hspaType": ["UMTS / WCDMA", "HSPDA", "HSUPA"], 
+        "hSPAFreq": [850, 900, 1900, 2100],
+        "lteType": [] 
+    }
+]}
